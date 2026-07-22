@@ -1,0 +1,229 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    /* ── Strict Logo Branding Color Palette ── */
+    --bg-deep-black:   #05070F;
+    --bg-card-dark:    #0F172A;
+    --bg-card-alt:     #111827;
+    
+    --primary-blue:    #2F80FF;
+    --secondary-blue:  #4FA3FF;
+    --dark-blue:       #1D5BD8;
+    --sky-blue:        #60A5FA;
+    
+    --text-white:      #FFFFFF;
+    --text-light-gray: #CBD5E1;
+    --text-muted:      #94A3B8;
+    --text-subtle:     #64748B;
+    
+    --border-glass:    rgba(255, 255, 255, 0.08);
+    --border-blue:     rgba(47, 128, 255, 0.3);
+    
+    --glow-neon-blue:  rgba(47, 128, 255, 0.45);
+    --glow-soft-blue:  rgba(79, 163, 255, 0.25);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--bg-deep-black);
+    color: var(--text-white);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: var(--primary-blue);
+    color: #FFFFFF;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--bg-deep-black);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(47, 128, 255, 0.35);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-blue);
+  }
+}
+
+/* ─── Glassmorphism Styles ─── */
+.glass-nav {
+  background: rgba(5, 7, 15, 0.82);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid var(--border-glass);
+}
+
+.glass-card {
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  background: rgba(15, 23, 42, 0.88);
+  border-color: rgba(47, 128, 255, 0.5);
+  box-shadow:
+    0 12px 40px 0 rgba(47, 128, 255, 0.25),
+    0 0 0 1px rgba(47, 128, 255, 0.15);
+  transform: translateY(-6px);
+}
+
+.glass-modal {
+  background: rgba(15, 23, 42, 0.96);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(47, 128, 255, 0.35);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 60px rgba(47, 128, 255, 0.2);
+}
+
+/* ─── Blue-Only Gradients ─── */
+.gradient-heading {
+  background: linear-gradient(135deg, #FFFFFF 0%, #E2E8F0 50%, #CBD5E1 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-blue-text {
+  background: linear-gradient(135deg, #93C5FD 0%, #4FA3FF 40%, #2F80FF 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ─── Neon Blue Glowing Buttons ─── */
+.btn-glow {
+  background: linear-gradient(135deg, #2F80FF 0%, #1D5BD8 100%);
+  box-shadow: 0 0 22px rgba(47, 128, 255, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.btn-glow:hover {
+  box-shadow: 0 0 40px rgba(47, 128, 255, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  transform: translateY(-2px);
+}
+
+.btn-secondary-glow {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.btn-secondary-glow:hover {
+  background: rgba(47, 128, 255, 0.12);
+  border-color: rgba(47, 128, 255, 0.45);
+  color: #FFFFFF;
+}
+
+/* ─── Pulse Glow Animation (Mock Test Button) ─── */
+@keyframes pulse-blue-glow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(47, 128, 255, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(79, 163, 255, 0.8);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-blue-glow 2.5s infinite ease-in-out;
+}
+
+/* ─── Floating Blob Keyframe ─── */
+@keyframes blob-float-blue {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -40px) scale(1.08);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.95);
+  }
+}
+
+.animate-blob-blue {
+  animation: blob-float-blue 14s ease-in-out infinite;
+}
+
+/* ─── Particle Canvas ─── */
+.particles-canvas {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── Floating Shape Animations ─── */
+@keyframes float-shape-1 {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-25px) rotate(180deg); }
+}
+@keyframes float-shape-2 {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-35px) rotate(-180deg); }
+}
+@keyframes float-shape-3 {
+  0%, 100% { transform: translate(0px, 0px) scale(1); }
+  33% { transform: translate(20px, -15px) scale(1.1); }
+  66% { transform: translate(-15px, 10px) scale(0.95); }
+}
+
+.animate-float-1 {
+  animation: float-shape-1 8s ease-in-out infinite;
+}
+.animate-float-2 {
+  animation: float-shape-2 10s ease-in-out infinite;
+}
+.animate-float-3 {
+  animation: float-shape-3 12s ease-in-out infinite;
+}
+
+/* ─── Neon Border Glow (Chatbot trigger) ─── */
+@keyframes neon-border-pulse {
+  0%, 100% {
+    box-shadow:
+      0 0 8px rgba(47, 128, 255, 0.5),
+      0 0 20px rgba(47, 128, 255, 0.3),
+      inset 0 0 6px rgba(47, 128, 255, 0.15);
+  }
+  50% {
+    box-shadow:
+      0 0 16px rgba(47, 128, 255, 0.8),
+      0 0 40px rgba(47, 128, 255, 0.5),
+      inset 0 0 12px rgba(47, 128, 255, 0.25);
+  }
+}
+
+.animate-neon-border {
+  animation: neon-border-pulse 2s ease-in-out infinite;
+}
+
+/* ─── Fade-in Animation ─── */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out;
+}
